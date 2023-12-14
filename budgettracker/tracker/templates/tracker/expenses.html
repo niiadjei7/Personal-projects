@@ -1,0 +1,54 @@
+<!-- tracker/templates/tracker/expenses.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ budget.name }} Expenses</title>
+
+    <!-- Load Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Embedded JSON Data -->
+    <script>
+        var chartData = JSON.parse('{{ chart_data_json|escapejs }}');
+    </script>
+</head>
+
+<body>
+    <h1>{{ budget.name }} Expenses</h1>
+    <p>Total Expenses: ${{ total_expenses }}</p>
+    <p>Remaining Budget: ${{ remaining_budget }}</p>
+
+    <!-- Canvas for the Pie Chart -->
+    <canvas id="expenseChart" width="400" height="400"></canvas>
+
+    <!-- List of Expenses -->
+    <ul>
+        {% for expense in expenses %}
+            <li>
+                {{ expense.name }} - ${{ expense.amount }}
+                - <a href="{% url 'delete_expense' budget.id expense.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Form to Add Expense -->
+    <form id="addExpenseForm">
+        {% csrf_token %}
+        <label for="expenseName">Expense Name:</label>
+        <input type="text" name="expenseName" required>
+        <label for="expenseAmount">Expense Amount:</label>
+        <input type="number" name="expenseAmount" required>
+        <button type="submit">Add Expense</button>
+    </form>
+
+    
+    
+
+    
+</body>
+    <!-- JavaScript to Render and Update the Pie Chart -->
+   
