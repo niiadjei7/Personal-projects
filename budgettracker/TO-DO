@@ -1,11 +1,10 @@
 DONE:
-- Welcome page
 - Validating user log-in/allowing user registration
 - Allows basic creation of budgets and addition/deletion of expenses and budgets
 - calculate and display total expenses and surplus or deficit
 
 
 TO-DO:
-- user account page
+- user profile page
 - add graphs for budgets(pie graphs)
 - add style and personalize
