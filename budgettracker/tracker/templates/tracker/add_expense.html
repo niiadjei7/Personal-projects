@@ -1,6 +1,0 @@
-<h1>Add Expense to {{ budget.name }}</h1>
-<form method="post" action="{% url 'add_expense' budget.id %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
